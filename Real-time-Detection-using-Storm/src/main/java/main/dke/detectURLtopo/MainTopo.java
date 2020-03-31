@@ -66,7 +66,7 @@ public class MainTopo {
     private static int numWorkers = 8;
 
     @Option(name = "--zookeeperHosts", aliases = {"--zookeeper"}, metaVar = "ZOOKEEPER HOST", usage = "path of zookeeper host")
-    private static String zkhosts = "MN:42181,SN01:42181,SN02:42181,SN03:42181,SN04:42181,SN05:42181,SN06:42181,SN07:42181,SN08:42181";
+    private static String zkhosts = "MN:2182,SN01:2182,SN02:2182,SN03:2182,SN04:2182,SN05:2182,SN06:2182,SN07:2182,SN08:2182";
 
     @Option(name = "--brokerList", aliases = {"--broker"}, metaVar = "BROKER LIST", usage = "path of broker list, bootstrap servers")
     private static String bootstrap = "MN:49092,SN01:49092,SN02:49092,SN03:49092,SN04:49092,SN05:49092,SN06:49092,SN07:49092,SN08:49092";
