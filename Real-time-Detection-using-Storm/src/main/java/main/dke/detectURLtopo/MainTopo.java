@@ -133,6 +133,9 @@ public class MainTopo {
         SpoutConfig kafkaSpoutConfig = new SpoutConfig(brokerHosts, inputTopic, "/" + inputTopic,
                 UUID.randomUUID().toString());
         kafkaSpoutConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
+        kafkaSpoutConfig.startOffsetTime = kafka.api.OffsetRequest.LatestTime();    // To pull the latest data in topic
+        kafkaSpoutConfig.ignoreZkOffsets = true;
+        kafkaSpoutConfig.maxOffsetBehind = 0;
 
 			/* KafkaBolt Configuration */
         Properties props = new Properties();
@@ -198,7 +201,7 @@ public class MainTopo {
         if (destination.equals("db")) {
             builder.setBolt("db-bolt", insertDBBolt, parameters.get(5)).shuffleGrouping("detect-bolt");
         } else if (destination.equals("kafka")) {
-            builder.setBolt("kafka-bolt", kafkabolt, parameters.get(5)).    shuffleGrouping("detect-bolt");            // Store Data to Kafka
+            builder.setBolt("kafka-bolt", kafkabolt, parameters.get(5)).shuffleGrouping("detect-bolt");            // Store Data to Kafka
         }
 
         Config config = new Config();

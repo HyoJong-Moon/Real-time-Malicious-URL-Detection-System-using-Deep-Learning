@@ -64,8 +64,8 @@ public class DetectionBolt extends BaseRichBolt {
 
         // Running session and get output tensor
         Tensor result = sess.runner()
-                .feed("main_input_4:0", x)
-                .fetch("main_output_4/Sigmoid:0")
+                .feed("main_input:0", x)
+                .fetch("main_output/Sigmoid:0")
                 .run()
                 .get(0);
 
